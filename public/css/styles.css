@@ -4,3 +4,71 @@
 *:after {
   box-sizing: border-box;
 }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* header */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0px;
+  padding: 10px;
+}
+
+header a {
+  text-decoration: none;
+  color: black;
+}
+
+header a:hover {
+  transform: translateY(1px);
+  transition: all 0.3 ease-in-out;
+}
+
+.siteName a {
+  font-size: 24px;
+  float: inline-start;
+  color: black;
+}
+
+#tools a {
+  float: inline-end;
+}
+
+/* navigation */
+
+nav ul {
+  list-style-type: none;
+  margin: 5px;
+  padding: 0;
+  background-color: #333;
+  color: white;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav li {
+  float: left;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  flex: 1;
+}
+
+nav li:hover {
+  background-color: deepskyblue;
+  color: #333;
+}
+
+/* footer */
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

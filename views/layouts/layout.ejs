@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/head') %>
+  <%- include('../partials/head') %>
 
+  <body>
     <picture>
-        <source srcset="images/site/small_check.png" media="(max-width:)">
-        <img src="images/site/small_check.jpg" alt="" width="" height="">
+      <source srcset="images/site/small_check.png" media="(max-width:1200px)" />
+      <img src="images/site/small_check.jpg" alt="checkerboard background" />
     </picture>
-
-<body>
     <div id="wrapper">
-        <%- include('../partials/header') %>
-        <%- include('../partials/navigation') %>
+      <%- include('../partials/header') %> <%- include('../partials/navigation')
+      %>
 
-        <main>
-            <%- body %>
-        </main>
+      <main><%- body %></main>
 
-        <%- include('../partials/footer') %>
+      <%- include('../partials/footer') %>
     </div>
-</body>
+  </body>
 </html>

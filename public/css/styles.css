@@ -1,13 +1,34 @@
-/******* Change Box Model ***************/
 *,
 *:before,
 *:after {
   box-sizing: border-box;
 }
 
-html, body {
-  height: 100%;
+body {
+  background-image: url("../images/site/small_check.jpg");
+  background-repeat: repeat;
   margin: 0;
+  padding: 0;
+}
+
+#wrapper {
+  background: white;
+  margin: 0 auto;
+  border: 4px solid #4c96d7;
+  border-radius: 10px;
+  max-width: 90%;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 20px;
 }
 
 /* header */
@@ -15,8 +36,7 @@ html, body {
 header {
   display: flex;
   justify-content: space-between;
-  margin: 15px 0px;
-  padding: 10px;
+  padding: 20px 20px;
 }
 
 header a {
@@ -26,7 +46,6 @@ header a {
 
 header a:hover {
   transform: translateY(1px);
-  transition: all 0.3 ease-in-out;
 }
 
 .siteName a {
@@ -65,10 +84,150 @@ nav li:hover {
   color: #333;
 }
 
-/* footer */
+/* main page */
+main {
+  margin: 5px;
+}
 
-footer {
-  position: absolute;
-  bottom: 0;
+/* hero grid */
+#hero-box {
+  position: relative;
+  margin-bottom: 20px;
+  grid-column: 1/-1;
+}
+
+.hero {
+  position: relative;
+}
+
+.hero picture img {
+  display: block;
   width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.hero h2 {
+  color: #00b3ff;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 15px;
+}
+
+.hero ul {
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  list-style: none;
+  color: #00b3ff;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 15px;
+}
+
+.hero button {
+  display: block;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.hero button img {
+  width: 150px;
+}
+
+.hero button img:hover {
+  transform: translateY(1px);
+}
+
+/* upgrades */
+#upgrades-card {
+  grid-column: 1;
+}
+
+.upgrades h3 {
+  margin-bottom: 20px;
+}
+
+.upgrades ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  list-style: none;
+  justify-items: center;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.upgrades li {
+  text-align: center;
+}
+
+.upgrades li a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon-container {
+  background-color: #00b3ff;
+  padding: 0 35px;
+  margin-bottom: 10px;
+}
+
+.upgrades img {
+  width: 100px;
+  height: 100px;
+  background: none;
+  padding: 10px;
+  display: block;
+  margin: 0 auto 10px auto;
+}
+
+/* Reviews Section Styles */
+#reviews-card {
+  grid-column: 2;
+}
+
+.reviews h4 {
+  padding: 0;
+  display: block;
+  font-size: 1.17em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
+.reviews ul {
+  padding: 0 15px;
+}
+
+.reviews li {
+  margin-bottom: 15px;
+}
+
+/* Footer Styles */
+footer {
+  padding: 20px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 700px) {
+  .home-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  #upgrades-card,
+  #reviews-card {
+    grid-column: 1;
+  }
+  
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
 }

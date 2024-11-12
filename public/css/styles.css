@@ -5,16 +5,19 @@
 }
 
 body {
-  background-image: url("../images/site/small_check.jpg");
+  background-image: url("../images/site/checkerboard.jpg");
   background-repeat: repeat;
+  background-position: top left;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+  height: 100%;
 }
 
 #wrapper {
   background: white;
   margin: 0 auto;
-  border: 4px solid #4c96d7;
+  border: 4px solid #2a5293;
   border-radius: 10px;
   max-width: 90%;
   position: absolute;
@@ -22,6 +25,8 @@ body {
   left: 50%;
   transform: translateX(-50%);
   padding: 0;
+  width: 100%;
+  max-width: 70%;
 }
 
 .home-grid {
@@ -101,14 +106,14 @@ main {
 }
 
 .hero picture img {
-  display: block;
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
+  margin-left: 100px;
 }
 
 .hero h2 {
-  color: #00b3ff;
+  color: #2a5293;
   position: absolute;
   top: 20px;
   left: 20px;
@@ -120,7 +125,7 @@ main {
   top: 60px;
   left: 20px;
   list-style: none;
-  color: #00b3ff;
+  color: #2a5293;
   background-color: rgba(255, 255, 255, 0.8);
   padding: 15px;
 }
@@ -172,7 +177,7 @@ main {
 }
 
 .icon-container {
-  background-color: #00b3ff;
+  background-color: #2a5293;
   padding: 0 35px;
   margin-bottom: 10px;
 }
@@ -216,18 +221,76 @@ footer {
 }
 
 /* Responsive Design */
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1200px) {
+  body {
+    background-image: url("../images/site/small_check.jpg");
+  }
+
+  #wrapper {
+    max-width: 80%;
+  }
+
   .home-grid {
     grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
   }
-  
+
   #upgrades-card,
   #reviews-card {
     grid-column: 1;
+  }
+
+  .hero picture img {
+    margin-left: 80px;
+  }
+
+  .icon-container {
+    padding: 0 80px;
+  }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 700px) {
+  body {
+    background-image: url("../images/site/small_check.png");
+  }
+
+  #wrapper {
+    max-width: 90%;
   }
   
   nav ul {
     flex-direction: column;
     gap: 10px;
+  }
+
+  .hero picture img {
+    width: 75%;
+  }
+
+  .hero h2 {
+    font-size: 1em;
+    top: 0px;
+  }
+  
+  .hero ul {
+    top: 30px;
+  }
+  
+  .hero button {
+    padding: 0;
+  }
+  
+  .hero button img {
+    width: 100px;
+  }
+
+  .hero picture img {
+    display: block;
+    margin-left: 50px;
+  }
+
+  .icon-container {
+    padding: 0 35px;
   }
 }

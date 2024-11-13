@@ -12,6 +12,7 @@ body {
   padding: 0;
   overflow-x: hidden;
   height: 100%;
+  font-family: 'Quicksand', 'Inter';
 }
 
 #wrapper {

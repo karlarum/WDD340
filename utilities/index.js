@@ -91,3 +91,10 @@ Util.buildVehicleDetail = async function(data){
  * General Error Handling
  **************************************** */
 Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
+
+/* ****************************************
+ * Utility Function to Generate Intentional Error
+ **************************************** */
+Util.intentionalError = () => {
+  throw new Error('Intentional 500 Server Error')
+}

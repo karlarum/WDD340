@@ -6,5 +6,7 @@ const utilities = require("../utilities/")
 
 // Route to build account by classification view
 router.get("/login", utilities.handleErrors(accountController.buildLogin));
+// Route to build registration
+router.get("/register", utilities.handleErrors(accountController.buildRegister));
 
 module.exports = router;

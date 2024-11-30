@@ -1,0 +1,27 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+  <% } %>
+  
+  <%- message %>
+
+  <div class="register-container">
+    <form class="register-form" action="/account/register" method="POST">
+      <div>
+        <label for="account_firstname">First Name:</label>
+        <input type="text" id="account_firstname" name="account_firstname" required>
+      </div>
+      <div>
+        <label for="account_lastname">Last Name:</label>
+        <input type="text" id="account_lastname" name="account_lastname" required>
+      </div>
+      <div>
+        <label for="account_email">Email Address:</label>
+        <input type="email" id="account_email" name="account_email" required>
+      </div>
+      <div>
+        <label for="account_password">Password:</label>
+        <input type="password" id="account_password" name="account_password" required>
+      </div>
+      <button type="submit" class="register-btn">Register</button>
+    </form>
+  </div>

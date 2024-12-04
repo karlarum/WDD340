@@ -10,10 +10,11 @@ async function buildLogin(req, res, next) {
       title: "Login",
       nav,
       message: "",
+      errors: null,
     })
   }
 
-  /* ****************************************
+/* ****************************************
 *  Process Registration
 * *************************************** */
 async function registerAccount(req, res) {

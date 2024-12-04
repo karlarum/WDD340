@@ -12,7 +12,7 @@ async function buildLogin(req, res, next) {
     })
   }
 
-  /* ****************************************
+/* ****************************************
 *  Deliver registration view
 * *************************************** */
 async function buildRegister(req, res, next) {
@@ -21,6 +21,7 @@ async function buildRegister(req, res, next) {
     title: "Register",
     nav,
     message: "",
+    errors: null,
   })
 }
 

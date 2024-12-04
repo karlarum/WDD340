@@ -16,7 +16,7 @@
     <form class="register-form" action="/account/register" method="POST">
       <div>
         <label for="account_firstname">First Name:</label>
-        <input type="text" id="account_firstname" name="account_firstname" required>
+        <input type="text" name="account_firstname" id="accountFirstname" required value="<%= locals.account_firstname %>">
       </div>
       <div>
         <label for="account_lastname">Last Name:</label>

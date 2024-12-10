@@ -186,28 +186,44 @@ invCont.getInventoryJSON = async (req, res, next) => {
  *  Build edit inventory view
  * ************************** */
 invCont.editInventoryView = async function (req, res, next) {
-  const inv_id = parseInt(req.params.inv_id)
-  let nav = await utilities.getNav()
-  const itemData = await invModel.getInventoryById(inv_id)
-  const classificationSelect = await utilities.buildClassificationList(itemData.classification_id)
-  const itemName = `${itemData.inv_make} ${itemData.inv_model}`
-  res.render("./inventory/edit-inventory", {
-    title: "Edit " + itemName,
-    nav,
-    classificationSelect: classificationSelect,
-    errors: null,
-    inv_id: itemData.inv_id,
-    inv_make: itemData.inv_make,
-    inv_model: itemData.inv_model,
-    inv_year: itemData.inv_year,
-    inv_description: itemData.inv_description,
-    inv_image: itemData.inv_image,
-    inv_thumbnail: itemData.inv_thumbnail,
-    inv_price: itemData.inv_price,
-    inv_miles: itemData.inv_miles,
-    inv_color: itemData.inv_color,
-    classification_id: itemData.classification_id
-  })
+  try {
+    const inv_id = parseInt(req.params.invId)
+    let nav = await utilities.getNav()
+    
+    const itemData = await invModel.getInventorybyInvId(inv_id)
+    
+    if (!itemData || !itemData[0]) {
+      req.flash("notice", "Sorry, we couldn't find that inventory item.")
+      res.redirect("/inv")
+      return
+    }
+
+    const data = itemData[0] 
+    const classificationSelect = await utilities.buildClassificationList(data.classification_id)
+    const itemName = `${data.inv_make} ${data.inv_model}`
+
+    res.render("./inventory/edit-inventory", {
+      title: "Edit " + itemName,
+      nav,
+      classificationSelect: classificationSelect,
+      errors: null,
+      inv_id: data.inv_id,
+      inv_make: data.inv_make,
+      inv_model: data.inv_model,
+      inv_year: data.inv_year,
+      inv_description: data.inv_description,
+      inv_image: data.inv_image,
+      inv_thumbnail: data.inv_thumbnail,
+      inv_price: data.inv_price,
+      inv_miles: data.inv_miles,
+      inv_color: data.inv_color,
+      classification_id: data.classification_id
+    })
+  } catch (error) {
+    console.error("Error in editInventoryView:", error)
+    req.flash("notice", "Sorry, there was an error processing your request.")
+    res.redirect("/inv")
+  }
 }
 
 /* ***************************
@@ -269,3 +285,5 @@ invCont.updateInventory = async function (req, res, next) {
     })
   }
 }
+
+module.exports = invCont

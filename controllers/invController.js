@@ -214,6 +214,7 @@ invCont.editInventoryView = async function (req, res, next) {
  *  Update Inventory Data
  * ************************** */
 invCont.updateInventory = async function (req, res, next) {
+  let nav = await utilities.getNav()
   const {
     inv_id,
     inv_make,
@@ -227,9 +228,8 @@ invCont.updateInventory = async function (req, res, next) {
     inv_color,
     classification_id,
   } = req.body
-
-  const regResult = await invModel.updateInventory(
-    inv_id,
+  const updateResult = await invModel.updateInventory(
+    inv_id,  
     inv_make,
     inv_model,
     inv_description,
@@ -242,33 +242,30 @@ invCont.updateInventory = async function (req, res, next) {
     classification_id
   )
 
-  if (regResult) {
-    req.flash(
-      "notice",
-      `The ${inv_make} ${inv_model} was successfully edited.`
-    )
+  if (updateResult) {
+    const itemName = updateResult.inv_make + " " + updateResult.inv_model
+    req.flash("notice", `The ${itemName} was successfully updated.`)
     res.redirect("/inv/")
   } else {
-    req.flash("notice", "Sorry, the edit failed.")
-    let nav = await utilities.getNav()
-    let classificationSelect = await utilities.buildClassificationList(classification_id)
+    const classificationSelect = await utilities.buildClassificationList(classification_id)
+    const itemName = `${inv_make} ${inv_model}`
+    req.flash("notice", "Sorry, the insert failed.")
     res.status(501).render("inventory/edit-inventory", {
-      title: "Edit Vehicle",
-      nav,
-      classificationSelect,
-      errors: null,
-      classification_id,
-      inv_make,
-      inv_model,
-      inv_description,
-      inv_image,
-      inv_thumbnail,
-      inv_price,
-      inv_year,
-      inv_miles,
-      inv_color
+    title: "Edit " + itemName,
+    nav,
+    classificationSelect: classificationSelect,
+    errors: null,
+    inv_id,
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_miles,
+    inv_color,
+    classification_id
     })
   }
 }
-
-module.exports = invCont

@@ -2,7 +2,7 @@
     <h1><%= title %></h1>
   <% } %>
   
-  <%- message %>
+  <%- messages() %>
 
   <% if (errors) { %>
     <ul class="notice">
@@ -14,7 +14,7 @@
 
 
   <div class="login-container">
-    <form class="login-form" action="/account/login" method="POST">
+    <form id="loginForm" action="/account/login" method="post">
       <div>
         <label for="account_email">Email:</label>
         <input type="email" id="account_email" name="account_email" required>

@@ -16,7 +16,7 @@
 
     <!-- form for editing a vehicle -->
     <div class="edit-inventory-container">
-      <form id="editInventoryForm" action="/inv/update" method="post">
+      <form id="updateForm" action="/inv/update" method="post">
         <%- classificationSelect %>
     
         <div class="form-group">
@@ -122,7 +122,12 @@
         </div>
     
         <div class="form-group">
-          <button type="submit">Update Vehicle</button>
+          <button type="submit" disabled>Update Vehicle</button>
         </div>
+
+        <input type="hidden" name="inv_id"
+        <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+        <% } %>>
       </form>
+      <script src="../js/inv-update.js"></script>
     </div>

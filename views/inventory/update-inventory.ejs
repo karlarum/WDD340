@@ -47,10 +47,9 @@
 
             <label for="inv_color">Color:</label>
             <input type="text" name="inv_color" id="inv_color" required value="<%= locals.inv_color %>">
-
-            <input type="hidden" name="inv_id" value="<%= locals.inv_id %>">
             
             <button type="submit">Update Vehicle</button>
+
             <input type="hidden" name="inv_id"
             <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
             <% } %>>

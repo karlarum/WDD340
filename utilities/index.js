@@ -153,4 +153,25 @@ Util.checkJWTToken = (req, res, next) => {
   }
  }
 
- module.exports = Util
+ /* ****************************************
+* Middleware to check if user is Employee or Admin
+**************************************** */
+Util.checkEmployeeAdmin = (req, res, next) => {
+  if (res.locals.loggedin) {
+    const accountType = res.locals.accountData.account_type
+    if (accountType === "Employee" || accountType === "Admin") {
+      next()
+    } else {
+      req.flash("notice", "Please log in with appropriate credentials.")
+      return res.redirect("/account/login")
+    }
+  } else {
+    req.flash("notice", "Please log in.")
+    return res.redirect("/account/login")
+  }
+}
+
+ module.exports = {
+  ...Util,
+  checkEmployeeAdmin: Util.checkEmployeeAdmin
+ }

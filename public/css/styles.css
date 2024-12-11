@@ -526,6 +526,37 @@ body {
   padding: 1rem;
 }
 
+.account-update {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+form {
+  margin: 2em 0;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+}
+
+label {
+  display: block;
+  margin-top: 1em;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 0.5em;
+  margin-top: 0.5em;
+}
+
+button {
+  margin-top: 1em;
+  padding: 0.5em 1em;
+}
+
 /* Responsive Design */
 @media screen and (max-width: 1200px) {
   body {

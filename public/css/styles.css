@@ -48,6 +48,7 @@ header {
 header a {
   text-decoration: none;
   color: black;
+  padding: 5px;
 }
 
 header a:hover {
@@ -292,7 +293,7 @@ body {
 .login-container {
   width: 50%; 
   margin: 20px auto;
-  padding: 1px;
+  padding: 3px;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -332,7 +333,8 @@ body {
 .login-btn {
   width: 60%;
   max-width: 200px; 
-  margin: 0 auto; 
+  margin: 0 auto;
+  margin-top: 20px;
   padding: 10px;
   background-color: #003870;
   color: #fff;
@@ -462,7 +464,7 @@ body {
 
 .form-instruction {
   font-size: 0.875rem;
-  color: #666;
+  color: #353535;
   margin-top: 0.25rem;
 }
 
@@ -493,6 +495,60 @@ body {
   cursor: pointer;
 }
 
+/* Account Management Page */
+.account-management {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.account-management h2 {
+  color: #3b5879;
+  font-size: 2em;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #3b5879;
+}
+
+.account-management h3 {
+  color: #2c4159;
+  font-size: 1.5em;
+  margin: 2rem 0 1rem;
+}
+
+.account-management p {
+  margin: 1rem 0;
+}
+
+.account-management a {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #3b5879;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.account-management a:hover {
+  background-color: #357abd;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Inventory Management section */
+.account-management a[href^="/inv/"] {
+  background-color: #28a745;
+}
+
+.account-management a[href^="/inv/"]:hover {
+  background-color: #218838;
+}
+
 /* Management page */
 .management-links {
   padding: 2rem;
@@ -519,42 +575,80 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-#wrapper {
-  background-color: white;
-  min-height: 100vh;
-  width: 100%;
-  padding: 1rem;
-}
-
-.account-update {
+/* Form Styles */
+.form-container {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 
-form {
+.form-container form {
   margin: 2em 0;
+  background-color: #f8f9fa;
+  padding: 2em;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-fieldset {
+.form-container fieldset {
   border: none;
   padding: 0;
+  margin: 0;
 }
 
-label {
+.form-container legend {
+  font-size: 1.25em;
+  color: #3b5879;
+  font-weight: 600;
+  margin-bottom: 1em;
+}
+
+.form-container label {
   display: block;
   margin-top: 1em;
+  font-weight: 600;
+  color: #333;
 }
 
-input {
+.form-container input {
   display: block;
   width: 100%;
-  padding: 0.5em;
+  padding: 0.75em;
   margin-top: 0.5em;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
 }
 
-button {
-  margin-top: 1em;
-  padding: 0.5em 1em;
+.form-container input:focus {
+  outline: none;
+  border-color: #3b5879;
+  box-shadow: 0 0 0 2px rgba(59, 88, 121, 0.2);
+}
+
+.form-container button {
+  margin-top: 1.5em;
+  padding: 0.75em 1.5em;
+  background-color: #3b5879;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.form-container button:hover {
+  background-color: #357abd;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.form-container p {
+  margin: 1em 0;
+  color: #353535;
+  font-size: 0.9em;
+  line-height: 1.4;
 }
 
 /* Responsive Design */

@@ -542,11 +542,11 @@ body {
 
 /* Inventory Management section */
 .account-management a[href^="/inv/"] {
-  background-color: #28a745;
+  background-color: #186209;
 }
 
 .account-management a[href^="/inv/"]:hover {
-  background-color: #218838;
+  background-color: #0c3305;
 }
 
 /* Management page */

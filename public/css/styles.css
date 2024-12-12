@@ -472,6 +472,7 @@ body {
   background-color: #3b5879;
   color: white;
   padding: 0.75rem 1.5rem;
+  margin-top: 5px;
   border: none;
   border-radius: 4px;
   font-size: 1rem;
@@ -551,11 +552,12 @@ body {
 
 /* Management page */
 .management-links {
+  max-width: 1200px;
+  margin: 2rem auto;
   padding: 2rem;
-  margin: 2rem 0;
   display: flex;
-  gap: 1.5rem;
   flex-wrap: wrap;
+  gap: 1.5rem;
 }
 
 .management-links a {
@@ -573,6 +575,44 @@ body {
   background-color: #357abd;
   transform: translateY(-2px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.management-links h2 {
+  width: 100%;
+  margin: 1.5rem 0 1rem 0;
+  color: #333;
+}
+
+.management-links p {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #353535;
+}
+
+#classificationSelect {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+}
+
+#inventoryDisplay {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+#inventoryDisplay th,
+#inventoryDisplay td {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+#inventoryDisplay th {
+  background-color: #f8f9fa;
 }
 
 /* Form Styles */

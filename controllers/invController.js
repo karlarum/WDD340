@@ -1,5 +1,6 @@
 const invModel = require("../models/inventory-model")
 const utilities = require("../utilities/")
+const pool = require("../database/")
 
 const invCont = {}
 
@@ -338,6 +339,78 @@ invCont.deleteInventory = async function (req, res, next) {
   } else {
     req.flash("notice", "Sorry, the deletion failed.")
     res.redirect("/inv/delete/" + inv_id)
+  }
+}
+
+/* ***************************
+ *  Return Inventory by Classification As JSON
+ * ************************** */
+invCont.getInventoryJSON = async (req, res, next) => {
+  const classification_id = parseInt(req.params.classification_id)
+  const invData = await invModel.getInventoryByClassificationId(classification_id)
+  if (invData) {
+    return res.json(invData)
+  } else {
+    next(new Error("No data returned"))
+  }
+}
+
+/* ***************************
+ *  Build delete classification view
+ * ************************** */
+invCont.deleteClassificationView = async function (req, res, next) {
+  try {
+    const classification_id = parseInt(req.params.classification_id)
+    let nav = await utilities.getNav()
+    
+    // Check if classification exists and has no vehicles
+    const invData = await invModel.getInventoryByClassificationId(classification_id)
+    if (invData && invData.length > 0) {
+      req.flash("notice", "Cannot delete classification with existing vehicles.")
+      res.redirect("/inv")
+      return
+    }
+    
+    // Get classification details
+    const sql = "SELECT * FROM classification WHERE classification_id = $1"
+    const data = await pool.query(sql, [classification_id])
+    
+    if (!data.rows[0]) {
+      req.flash("notice", "Sorry, we couldn't find that classification.")
+      res.redirect("/inv")
+      return
+    }
+
+    const classification = data.rows[0]
+
+    res.render("./inventory/delete-classification", {
+      title: "Delete " + classification.classification_name,
+      nav,
+      errors: null,
+      classification_id: classification.classification_id,
+      classification_name: classification.classification_name,
+    })
+  } catch (error) {
+    console.error("Error in deleteClassificationView:", error)
+    req.flash("notice", "Sorry, there was an error processing your request.")
+    res.redirect("/inv")
+  }
+}
+
+/* ***************************
+ *  Process Delete Classification
+ * ************************** */
+invCont.deleteClassification = async function (req, res, next) {
+  const classification_id = parseInt(req.body.classification_id)
+
+  const deleteResult = await invModel.deleteClassification(classification_id)
+
+  if (deleteResult) {
+    req.flash("notice", "The classification was successfully deleted.")
+    res.redirect("/inv/")
+  } else {
+    req.flash("notice", "Sorry, the deletion failed.")
+    res.redirect("/inv/")
   }
 }
 

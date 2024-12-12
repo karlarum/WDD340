@@ -1,0 +1,39 @@
+<% if (title) { %>
+  <h1><%= title %></h1>
+  <% } else {
+    res.redirect('/')
+  } %>
+  
+  <%- messages() %>
+
+  <% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+
+   <!-- form for deleting classification -->
+  <div class="delete-clasification-container">
+    <form class="deleteClassificationForm" action="/inv/delete-classification" method="post">
+
+        <div class="form-group">
+            <label for="classification_name">Classification Name:</label>
+            <input 
+                type="text" 
+                id="classification_name" 
+                name="classification_name" 
+                readonly 
+                value="<%= locals.classification_name %>"
+            >
+        </div>
+        
+        <div class="form-group">
+            <button type="submit">Delete Classification</button>
+        </div>
+        <input type="hidden" name="classification_id" 
+        <% if(locals.classification_id) { %> value="<%= locals.classification_id %>"
+        <% } %>>
+    </form>
+  </div>

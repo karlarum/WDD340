@@ -21,7 +21,6 @@ router.get("/add-classification",
   utilities.checkEmployeeAdmin,
   utilities.handleErrors(invController.buildAddClassification)
 );
-
 // Process the add-classification view
 router.post("/add-classification", 
   utilities.checkLogin,
@@ -50,7 +49,6 @@ router.get("/edit/:invId",
   utilities.checkEmployeeAdmin,
   utilities.handleErrors(invController.editInventoryView)
 );
-
 // Route to update inventory item
 router.post("/update/",
   utilities.checkLogin,
@@ -65,11 +63,23 @@ router.get("/delete/:inv_id",
   utilities.checkEmployeeAdmin,
   utilities.handleErrors(invController.deleteInventoryView)
 );
-//Route to process the delete inventory operation
+// Route to process the delete inventory operation
 router.post("/delete", 
   utilities.checkLogin,
   utilities.checkEmployeeAdmin,
   utilities.handleErrors(invController.deleteInventory)
 );
+// Route to build delete classification view
+router.get("/delete-classification/:classification_id", 
+  utilities.checkLogin,
+  utilities.checkEmployeeAdmin,
+  utilities.handleErrors(invController.deleteClassificationView)
+)
+// Route to process the delete classification operation
+router.post("/delete-classification",
+  utilities.checkLogin,
+  utilities.checkEmployeeAdmin,
+  utilities.handleErrors(invController.deleteClassification)
+)
 
 module.exports = router;
